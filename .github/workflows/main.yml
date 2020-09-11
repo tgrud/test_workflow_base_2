@@ -4,6 +4,7 @@ on:
   pull_request:
     branches: [ master, dev ]
 
+
 # comment 1
 jobs:
   test_pull_request:
@@ -13,7 +14,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      # - run: npm ci
       - run: echo "${{ github.base_ref }}"
       - run: echo "${{ github.event.pull_request.base.ref }}"
       - run: echo "${{ github.head_ref }}"
