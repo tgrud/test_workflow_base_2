@@ -1,0 +1,21 @@
+
+name: Node Base ref
+
+on:
+  pull_request:
+    branches: [ master, dev ]
+
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      # Trying to use github.
+      - run: echo "${{ github.base_ref }}"
+      - run: echo "${{ github.head_ref }}"
+      # Trying to use github.event.pull_request.
+      - run: echo "${{ github.event.pull_request.base.ref }}"
+      - run: echo "${{ github.event.pull_request.head.ref }}"
